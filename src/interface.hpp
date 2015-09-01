@@ -1,7 +1,7 @@
 /*
  *       title: blast3d
  *        file: interface.hpp
- *     licence: GNU V.2
+ *     licence: GNU General Public License v2.0
  *      source: https://github.com/italojohnny/blast3d
  *      author: Italo Johnny
  *       email: italojohnnydosanjos@gmail.com
@@ -15,6 +15,8 @@
 #include <iostream>
 using namespace std;
 
+#include "player.hpp"
+
 const int WIDTH  = 800;
 const int HEIGHT = 600;
 
@@ -24,6 +26,9 @@ class Interface
 		Interface(int &argc, char **argv);
 
 	private:
+		float my_rotate;
+		Player *p1;
+
 		void initialize (void);
 		static void reshape (GLsizei, GLsizei);
 		static void keyboard (unsigned char, int, int);

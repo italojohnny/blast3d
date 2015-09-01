@@ -1,7 +1,7 @@
 /*
  *       title: blast3d
  *        file: interface.cpp
- *     licence: GNU V.2
+ *     licence: GNU General Public License v2.0
  *      source: https://github.com/italojohnny/blast3d
  *      author: Italo Johnny
  *       email: italojohnnydosanjos@gmail.com
@@ -32,6 +32,9 @@ Interface::Interface(int &argc, char **argv)
 void Interface::initialize (void)
 {
 	glClearColor (0.0f, 0.0f, 0.0f, 1);
+
+	p1 = new Player();
+	my_rotate = 0.0;
 	glEnable(GL_DEPTH_TEST);
 }
 
@@ -57,6 +60,11 @@ void Interface::keyboard (unsigned char key, int x, int y)
 
 void Interface::timer (int interval)
 {
+	if (_this->my_rotate >= 360.0)
+		_this->my_rotate = 0.0;
+	else
+		_this->my_rotate += 0.5;
+	
 	interval = 30;
 	glutPostRedisplay();
 	glutTimerFunc(interval, Interface::timer, 1);
@@ -65,6 +73,12 @@ void Interface::timer (int interval)
 void Interface::display (void)
 {
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	
+	glPushMatrix();
+		glRotatef(_this->my_rotate, 0, 1, 0);
+		_this->p1->draws();
+	glPopMatrix();
+
 	glutSwapBuffers();
 }
 
