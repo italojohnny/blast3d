@@ -16,6 +16,7 @@
 using namespace std;
 
 #include "player.hpp"
+#include "scenery.hpp"
 
 const int WIDTH  = 800;
 const int HEIGHT = 600;
@@ -28,8 +29,10 @@ class Interface
 	private:
 		float my_rotate;
 		Player *p1;
+		Scenery *base;		
 
 		void initialize (void);
+		void lighting (void);
 		static void reshape (GLsizei, GLsizei);
 		static void keyboard (unsigned char, int, int);
 		static void timer (int);

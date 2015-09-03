@@ -1,6 +1,6 @@
 /*
  *       title: blast3d
- *        file: asteroid.hpp
+ *        file: scenery.hpp
  *     licence: GNU General Public License v2.0
  *      source: https://github.com/italojohnny/blast3d
  *      author: Italo Johnny
@@ -8,17 +8,18 @@
  * Description: ...
  *
  */
-#ifndef ASTEROID_HPP
-#define ASTEROID_HPP
+#ifndef SCENERY_HPP
+#define SCENERY_HPP
 
 #include <GL/glut.h>
 #include <iostream>
 using namespace std;
 
-class Asteroid
+class Scenery
 {
 	public:
-		Asteroid (void);
+		Scenery (void);	
+		void draws (void);
 };
 
 #endif

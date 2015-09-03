@@ -34,8 +34,31 @@ void Interface::initialize (void)
 	glClearColor (0.0f, 0.0f, 0.0f, 1);
 
 	p1 = new Player();
+	base = new Scenery();
+
 	my_rotate = 0.0;
+	glEnable(GL_COLOR_MATERIAL);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
 	glEnable(GL_DEPTH_TEST);
+}
+
+void Interface::lighting (void)
+{
+	GLfloat light_1[4] = {0.2, 0.2, 0.2, 1.0};
+	GLfloat light_2[4] = {0.7, 0.7, 0.7, 1.0};
+	GLfloat light_3[4] = {1.0, 1.0, 1.0, 1.0};
+	GLfloat light_4[4] = {0.0,50.0,50.0, 1.0};
+
+	GLfloat anyth_1[4] = {0.0, 0.0, 0.0, 0.0};
+	GLint   anyth_2 = 60;
+
+	glMaterialfv(GL_FRONT, GL_SPECULAR, anyth_1);
+	glMateriali (GL_FRONT, GL_SHININESS, anyth_2);
+	glLightfv(GL_LIGHT0, GL_AMBIENT, light_1);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_2);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, light_3);
+	glLightfv(GL_LIGHT0, GL_POSITION, light_4);
 }
 
 void Interface::reshape (GLsizei w, GLsizei z)
@@ -74,11 +97,17 @@ void Interface::display (void)
 {
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
-	glPushMatrix();
+	
+		_this->lighting();	
+	//glPushMatrix();
+	
 		glRotatef(_this->my_rotate, 0, 1, 0);
+		_this->base->draws();
 		_this->p1->draws();
-	glPopMatrix();
-
+	
+	//glPopMatrix();
+	
+	
 	glutSwapBuffers();
 }
 
