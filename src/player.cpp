@@ -22,7 +22,7 @@ void Player::draws (void)
 	glEnd ();
 
 	glColor3f (0.15f, 0.15f,0.15f);
-	//glColor3f (1, 0, 0);
+	glColor3f (1, 0, 0);
 	glBegin(GL_TRIANGLES);
 		glVertex3f(5.0f, 0.0f,-01.0f);glVertex3f(3.0f, 0.0f,-05.0f);glVertex3f(7.0f, 0.0f,-05.0f);
 		glVertex3f(5.0f, 7.5f,-15.0f);glVertex3f(3.0f, 0.0f,-05.0f);glVertex3f(7.0f, 0.0f,-05.0f);
@@ -36,7 +36,8 @@ void Player::draws (void)
 		glVertex3f(5.0f, 0.0f,-01.0f);glVertex3f(5.0f,-7.5f,-15.0f);glVertex3f(7.0f, 0.0f,-05.0f);
 		glVertex3f(5.0f, 0.0f,-01.0f);glVertex3f(3.0f, 0.0f,-05.0f);glVertex3f(5.0f,-7.5f,-15.0f);
 	glEnd ();
-
+/*
+	glColor3f (0.15f, 0.15f,0.15f);
 	//glColor3f (0, 0, 1);
 	glBegin(GL_TRIANGLES);
 		glVertex3f(-5.0f, 0.0f,-01.0f);glVertex3f(-3.0f, 0.0f,-05.0f);glVertex3f(-7.0f, 0.0f,-05.0f);
@@ -51,23 +52,20 @@ void Player::draws (void)
 		glVertex3f(-5.0f, 0.0f,-01.0f);glVertex3f(-5.0f,-7.5f,-15.0f);glVertex3f(-7.0f, 0.0f,-05.0f);
 		glVertex3f(-5.0f, 0.0f,-01.0f);glVertex3f(-3.0f, 0.0f,-05.0f);glVertex3f(-5.0f,-7.5f,-15.0f);
 	glEnd ();
-	
-	//glColor3f (0.1, 0.1, 0.1);
+*/	
+glColor3f(0, 0, 1);	
 	glBegin(GL_TRIANGLES);
-		glVertex3f(20.0f, 0.0f,-15.0f);glVertex3f( 3.0f, 0.0f, -5.0f);glVertex3f( 5.0f, 0.0f, -1.0f);
-	glEnd();
-	
-	glBegin(GL_TRIANGLES);
-		glVertex3f(-20.0f, 0.0f,-15.0f);glVertex3f(-3.0f, 0.0f, -5.0f);glVertex3f(-5.0f, 0.0f, -1.0f);
+		glVertex3f( 15.0f, 0.0f,-20.0f);glVertex3f( 5.0f, 0.0f, -1.0f);glVertex3f( 5.0f, 2.2f, -5.0f);
+		glVertex3f( 15.0f, 0.0f,-20.0f);glVertex3f( 5.0f, 0.0f, -1.0f);glVertex3f( 5.0f,-2.2f, -5.0f);
 	glEnd();
 	
 	glColor3f(1,1,1);
-	glBegin(GL_POINTS);
+	glBegin(GL_LINES);
 
-		glVertex3f(20.0f, 3.0f,-15.0f);
-		glVertex3f( 3.0f, 3.0f, -5.0f);
-		glVertex3f( 5.0f, 3.0f, -1.0f);
+		glVertex3f(15.0f, 0.0f,-20.0f);glVertex3f( 5.0f, 0.0f, -1.0f);
+		glVertex3f(15.0f, 0.0f,-20.0f);glVertex3f( 5.0f, 2.2f, -5.0f);
 
+		glVertex3f( 5.0f, 0.0f, -1.0f);glVertex3f(5, 7.5f , -15.0f);
 	glEnd();
 
 }

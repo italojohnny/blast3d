@@ -101,13 +101,13 @@ void Interface::display (void)
 		//_this->lighting();	
 	//glPushMatrix();
 		
-		//glRotatef(-0, 1, 0, 0);glRotatef(180, 0, 1, 0);
+		glRotatef(90, 1, 0, 0);glRotatef(180, 0, 1, 0);
 		
 		//glRotatef(0, 1, 0, 0);glRotatef(180, 0, 1, 0);
 	
 		glRotatef(_this->my_rotate, 0, 1, 0);glRotatef(_this->my_rotate, 1, 0, 0);glRotatef(_this->my_rotate, 0, 0, 1);
 		
-		_this->base->draws();
+		//_this->base->draws();
 		_this->p1->draws();
 	
 	//glPopMatrix();
