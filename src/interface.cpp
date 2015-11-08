@@ -70,7 +70,7 @@ void Interface::reshape (GLsizei w, GLsizei z)
 	gluPerspective(45, ((GLfloat)WIDTH / (GLfloat)HEIGHT), 0.5, 500);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	gluLookAt(0, 0, 100, 0,0,0, 0,1,0);
+	gluLookAt(0, 0, 50, 0,0,0, 0,1,0);
 
 }
 
@@ -101,11 +101,11 @@ void Interface::display (void)
 		//_this->lighting();	
 	//glPushMatrix();
 		
-		glRotatef(30, 1, 0, 0);glRotatef(180, 0, 1, 0);
+		//glRotatef(-0, 1, 0, 0);glRotatef(180, 0, 1, 0);
 		
 		//glRotatef(0, 1, 0, 0);glRotatef(180, 0, 1, 0);
 	
-		//glRotatef(_this->my_rotate, 0, 1, 0);glRotatef(_this->my_rotate, 1, 0, 0);glRotatef(_this->my_rotate, 0, 0, 1);
+		glRotatef(_this->my_rotate, 0, 1, 0);glRotatef(_this->my_rotate, 1, 0, 0);glRotatef(_this->my_rotate, 0, 0, 1);
 		
 		_this->base->draws();
 		_this->p1->draws();
