@@ -17,8 +17,11 @@ using namespace std;
 
 class Asteroid
 {
+	private:
+		int x, y, z;
 	public:
 		Asteroid (void);
+		void draws (void);
 };
 
 #endif

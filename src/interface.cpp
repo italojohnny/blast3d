@@ -20,7 +20,10 @@ Interface::Interface(int &argc, char **argv)
 	glutInitWindowSize(WIDTH, HEIGHT);
 	glutInitWindowPosition((glutGet(GLUT_SCREEN_WIDTH) - WIDTH)/2, (glutGet(GLUT_SCREEN_HEIGHT) - HEIGHT)/2);
 	glutCreateWindow(title);
-	glutKeyboardFunc(this->keyboard);
+	glutKeyboardFunc(this->keyboardDown);
+	glutKeyboardUpFunc(this->keyboardUp);
+	glutSpecialFunc(this->skeyboardDown);
+	glutSpecialUpFunc(this->skeyboardUp);
 	glutTimerFunc(1, this->timer, 1);
 	glutReshapeFunc(this->reshape);
 	glutDisplayFunc(this->display);
@@ -35,12 +38,17 @@ void Interface::initialize (void)
 
 	p1 = new Player();
 	base = new Scenery();
+	for (int i=0; i < MAX_ASTEROID; i++)
+		estrelas[i] = new Asteroid();
 
 	my_rotate = 0.0;
 	glEnable(GL_COLOR_MATERIAL);
 	//glEnable(GL_LIGHTING);
 	//glEnable(GL_LIGHT0);
 	glEnable(GL_DEPTH_TEST);
+
+	//
+	glutSetKeyRepeat(GLUT_KEY_REPEAT_OFF);
 }
 
 void Interface::lighting (void)
@@ -74,11 +82,26 @@ void Interface::reshape (GLsizei w, GLsizei z)
 
 }
 
-void Interface::keyboard (unsigned char key, int x, int y)
+void Interface::keyboardDown (unsigned char key, int x, int y)
 {
-	if (key == 27) {
-		exit (0);
-	}
+	_this->keystates[key] = true;
+	if (_this->keystates[27])
+		exit(0);
+}
+
+void Interface::keyboardUp (unsigned char key, int x, int y)
+{
+	_this->keystates[key] = false;
+}
+
+void Interface::skeyboardDown (int key, int x, int y)
+{
+	cout << key << endl;
+}
+
+void Interface::skeyboardUp (int key, int x, int y)
+{
+	cout << key << endl;
 }
 
 void Interface::timer (int interval)
@@ -109,6 +132,8 @@ void Interface::display (void)
 		glRotatef(_this->my_rotate, 0, 1, 0);//glRotatef(15, 1, 0, 0);
 		
 		_this->base->draws();
+		for (int i=0; i < MAX_ASTEROID; i++)
+			_this->estrelas[i]->draws();
 		_this->p1->draws();
 	
 	//glPopMatrix();

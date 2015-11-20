@@ -16,6 +16,8 @@ using namespace std;
 
 int main (int argc, char **argv)
 {
+	srand(time(NULL));
+	
 	Interface *game = new Interface(argc, argv);
 	return 0;
 	

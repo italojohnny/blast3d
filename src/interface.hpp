@@ -17,10 +17,11 @@ using namespace std;
 
 #include "player.hpp"
 #include "scenery.hpp"
+#include "asteroid.hpp"
 
 const int WIDTH  = 800;
 const int HEIGHT = 600;
-
+const int MAX_ASTEROID = 200;
 class Interface
 {
 	public:
@@ -28,13 +29,20 @@ class Interface
 
 	private:
 		float my_rotate;
+		bool keystates[256];
+
 		Player *p1;
 		Scenery *base;		
+		Asteroid *estrelas[MAX_ASTEROID];
 
 		void initialize (void);
 		void lighting (void);
 		static void reshape (GLsizei, GLsizei);
-		static void keyboard (unsigned char, int, int);
+		static void keyboardDown (unsigned char, int, int);
+		static void keyboardUp (unsigned char, int, int);
+		static void skeyboardDown (int, int, int);
+		static void skeyboardUp (int, int, int);
+
 		static void timer (int);
 		static void display (void);
 };
