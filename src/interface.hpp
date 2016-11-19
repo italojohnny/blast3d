@@ -21,7 +21,7 @@ using namespace std;
 
 const int WIDTH  = 800;
 const int HEIGHT = 600;
-const int MAX_ASTEROID = 5000;
+const int MAX_ASTEROID = 10000;
 class Interface
 {
 	public:

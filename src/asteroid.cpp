@@ -2,9 +2,9 @@
 
 Asteroid::Asteroid (void)
 {
-	r = 100;
-	ang1 = (180.0 - 90.0)* ((((float) rand()) / (float) 180.0)) + 90.0;
-	ang2 = (360.0 - 90.0)* ((((float) rand()) / (float) 360.0)) + 90.0;
+	r = 400;
+	ang1 = ((float(rand()) / float(RAND_MAX)) * (180.0 - 1.0)) + 1.0;
+	ang2 = ((float(rand()) / float(RAND_MAX)) * (360.0 - 1.0)) + 1.0;
 }
 
 void Asteroid::draws (void)
