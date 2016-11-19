@@ -10,7 +10,7 @@
  */
 #ifndef ASTEROID_HPP
 #define ASTEROID_HPP
-
+#include <cmath>
 #include <GL/glut.h>
 #include <iostream>
 using namespace std;
@@ -18,7 +18,7 @@ using namespace std;
 class Asteroid
 {
 	private:
-		int x, y, z;
+		float r, ang1, ang2;
 	public:
 		Asteroid (void);
 		void draws (void);

@@ -19,5 +19,5 @@ main.o: main.cpp
 all:asteroid.o camera.o scenery.o player.o interface.o main.o
 	g++ main.o interface.o player.o scenery.o camera.o asteroid.o -lglut -lGLU -lGL -lm && ./a.out
 
-clean:
+clear:
 	rm -f *.o *.out

@@ -38,8 +38,7 @@ void Interface::initialize (void)
 
 	p1 = new Player();
 	base = new Scenery();
-	for (int i=0; i < MAX_ASTEROID; i++)
-		estrelas[i] = new Asteroid();
+	estrelas = new Asteroid[MAX_ASTEROID];
 
 	my_rotate = 0.0;
 	glEnable(GL_COLOR_MATERIAL);
@@ -78,7 +77,7 @@ void Interface::reshape (GLsizei w, GLsizei z)
 	gluPerspective(45, ((GLfloat)WIDTH / (GLfloat)HEIGHT), 0.5, 500);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	gluLookAt(0, 45, 50, 0,0,0, 0,1,0);
+	gluLookAt(0, 0, 50, 0,0,0, 0,1,0);
 
 }
 
@@ -122,21 +121,22 @@ void Interface::display (void)
 	
 	
 		//_this->lighting();	
-	//glPushMatrix();
+	glPushMatrix();
 		
-		//glRotatef(90, 1, 0, 0);glRotatef(180, 0, 1, 0);
+		//glRotatef(90, 1, 0, 0);
+		//glRotatef(180, 0, 1, 0);
 		
 		//glRotatef(90, 1, 0, 0);glRotatef(180, 0, 1, 0);
 	
-		//glRotatef(_this->my_rotate, 0, 1, 0);glRotatef(_this->my_rotate, 1, 0, 0);glRotatef(_this->my_rotate, 0, 0, 1);
-		glRotatef(_this->my_rotate, 0, 1, 0);//glRotatef(15, 1, 0, 0);
+		glRotatef(_this->my_rotate, 0, 1, 0);glRotatef(_this->my_rotate, 1, 0, 0);glRotatef(_this->my_rotate, 0, 0, 1);
+		//glRotatef(_this->my_rotate, 0, 1, 0);//glRotatef(15, 1, 0, 0);
 		
 		_this->base->draws();
 		for (int i=0; i < MAX_ASTEROID; i++)
-			_this->estrelas[i]->draws();
+			_this->estrelas[i].draws();
 		_this->p1->draws();
 	
-	//glPopMatrix();
+	glPopMatrix();
 	
 	
 	glutSwapBuffers();

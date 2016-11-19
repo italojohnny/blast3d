@@ -21,7 +21,7 @@ using namespace std;
 
 const int WIDTH  = 800;
 const int HEIGHT = 600;
-const int MAX_ASTEROID = 200;
+const int MAX_ASTEROID = 5000;
 class Interface
 {
 	public:
@@ -33,7 +33,7 @@ class Interface
 
 		Player *p1;
 		Scenery *base;		
-		Asteroid *estrelas[MAX_ASTEROID];
+		Asteroid *estrelas;
 
 		void initialize (void);
 		void lighting (void);
