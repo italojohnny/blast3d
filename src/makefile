@@ -1,3 +1,6 @@
+all:asteroid.o camera.o scenery.o player.o interface.o main.o
+	g++ main.o interface.o player.o scenery.o camera.o asteroid.o -lglut -lGLU -lGL -lm && ./a.out
+
 asteroid.o: asteroid.cpp asteroid.hpp
 	g++ -c asteroid.cpp
 
@@ -15,9 +18,6 @@ interface.o: interface.cpp interface.hpp
 
 main.o: main.cpp
 	g++ -c main.cpp
-
-all:asteroid.o camera.o scenery.o player.o interface.o main.o
-	g++ main.o interface.o player.o scenery.o camera.o asteroid.o -lglut -lGLU -lGL -lm && ./a.out
 
 clear:
 	rm -f *.o *.out

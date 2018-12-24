@@ -19,6 +19,7 @@ class Asteroid
 {
 	private:
 		float r, ang1, ang2;
+		float red, green, blue;
 	public:
 		Asteroid (void);
 		void draws (void);

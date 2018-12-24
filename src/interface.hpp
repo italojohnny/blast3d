@@ -30,6 +30,7 @@ class Interface
 	private:
 		float my_rotate;
 		bool keystates[256];
+		bool btn_up, btn_down, btn_left, btn_right;
 
 		Player *p1;
 		Scenery *base;		

@@ -83,24 +83,35 @@ void Interface::reshape (GLsizei w, GLsizei z)
 
 void Interface::keyboardDown (unsigned char key, int x, int y)
 {
+	cout << (int)key << endl;
 	_this->keystates[key] = true;
-	if (_this->keystates[27])
+	if (_this->keystates[27] || key == 'q')
 		exit(0);
 }
 
 void Interface::keyboardUp (unsigned char key, int x, int y)
 {
+	cout << (int)key << endl;
 	_this->keystates[key] = false;
 }
 
 void Interface::skeyboardDown (int key, int x, int y)
 {
-	cout << key << endl;
+	//cout << key << endl;
+	if (101 == key) _this->btn_up = true;
+	if (103 == key) _this->btn_down = true;
+	if (100 == key) _this->btn_left = true;
+	if (102 == key) _this->btn_right = true;
+
 }
 
 void Interface::skeyboardUp (int key, int x, int y)
 {
-	cout << key << endl;
+	//cout << key << endl;
+	if (101 == key) _this->btn_up = false;
+	if (103 == key) _this->btn_down = false;
+	if (100 == key) _this->btn_left = false;
+	if (102 == key) _this->btn_right = false;
 }
 
 void Interface::timer (int interval)
@@ -109,7 +120,12 @@ void Interface::timer (int interval)
 		_this->my_rotate = 0.0;
 	else
 		_this->my_rotate += 0.5;
-	
+
+	if (_this->btn_up) _this->p1->move_up();
+	if (_this->btn_down) _this->p1->move_down();
+	if (_this->btn_left) _this->p1->move_left();
+	if (_this->btn_right) _this->p1->move_right();
+
 	interval = 30;
 	glutPostRedisplay();
 	glutTimerFunc(interval, Interface::timer, 1);
@@ -118,27 +134,27 @@ void Interface::timer (int interval)
 void Interface::display (void)
 {
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
-	
-		//_this->lighting();	
+
+
+		//_this->lighting();
 	glPushMatrix();
-		
+
 		//glRotatef(90, 1, 0, 0);
-		//glRotatef(180, 0, 1, 0);
-		
+		//glRotatef(20, 0, 0, 1);
+
 		//glRotatef(90, 1, 0, 0);glRotatef(180, 0, 1, 0);
-	
-		glRotatef(_this->my_rotate, 0, 1, 0);glRotatef(_this->my_rotate, 1, 0, 0);glRotatef(_this->my_rotate, 0, 0, 1);
-		//glRotatef(_this->my_rotate, 0, 1, 0);//glRotatef(15, 1, 0, 0);
-		
-		_this->base->draws();
+
+		//glRotatef(_this->my_rotate, 0, 1, 0);glRotatef(_this->my_rotate, 1, 0, 0);glRotatef(_this->my_rotate, 0, 0, 1);
+		glRotatef(_this->my_rotate, 0, 1, 0);glRotatef(15, 1, 0, 0);
+
+		//_this->base->draws();
 		for (int i=0; i < MAX_ASTEROID; i++)
 			_this->estrelas[i].draws();
 		_this->p1->draws();
-	
+
 	glPopMatrix();
-	
-	
+
+
 	glutSwapBuffers();
 }
 
